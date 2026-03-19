@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARIAah — Moda para toda a família</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   MARIAAH — BRANDBOOK VARS
+   Inspired by Farm Rio editorial luxury
+============================================ */
+:root {
+  --r:    #C4906E;   /* rosé terracota — primária */
+  --rl:   #E8C9B5;   /* rosé claro */
+  --rp:   #F5EDE6;   /* rosé pálido — fundo */
+  --nu:   #D4B99A;   /* nude quente */
+  --te:   #8B6147;   /* terra médio */
+  --td:   #5C3D25;   /* terra escuro */
+  --cr:   #FAF6F2;   /* creme — fundo principal */
+  --ww:   #FFFCFA;   /* branco quente */
+  --ink:  #1E1510;   /* tinta */
+  --mu:   #9A8478;   /* muted */
+  --bo:   rgba(196,144,110,.15);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cr);
+  color:var(--ink);
+  font-family:'Outfit',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ── CURSOR ── */
+#cur,#cur2{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:50%;transition:width .3s,height .3s,background .3s}
+#cur{width:8px;height:8px;background:var(--r)}
+#cur2{width:40px;height:40px;border:1px solid rgba(196,144,110,.45);background:transparent;transition:transform .08s linear,width .3s,height .3s}
+#cur.h{width:5px;height:5px;background:var(--td)}
+#cur2.h{width:60px;height:60px;border-color:var(--td)}
+@media(max-width:900px){#cur,#cur2{display:none};body{cursor:auto}}
+
+/* ── PROMO BAR ── */
+.promo-bar{
+  height:40px;
+  background:var(--td);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+.promo-track{
+  display:flex;gap:80px;
+  animation:promo 18s linear infinite;
+  white-space:nowrap;
+}
+.promo-item{
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--rl);opacity:.75;
+  display:flex;align-items:center;gap:12px;
+}
+.promo-dot{color:var(--r);opacity:1;font-size:14px}
+@keyframes promo{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:40px;left:0;right:0;z-index:500;
+  height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;
+  transition:background .4s,top .4s,height .4s,backdrop-filter .4s;
+}
+nav.s{
+  top:0;height:64px;
+  background:rgba(250,246,242,.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bo);
+}
+.n-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;
+  letter-spacing:8px;text-transform:uppercase;
+  color:var(--ww);text-decoration:none;
+  transition:color .3s;
+}
+nav.s .n-logo{color:var(--ink)}
+.n-logo em{color:var(--rl);font-style:italic}
+nav.s .n-logo em{color:var(--r)}
+
+.n-links{display:flex;gap:36px;list-style:none}
+.n-links a{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.65);text-decoration:none;
+  transition:color .2s;position:relative;
+}
+.n-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--rl);transition:width .3s}
+.n-links a:hover{color:#fff}
+.n-links a:hover::after{width:100%}
+nav.s .n-links a{color:var(--mu)}
+nav.s .n-links a:hover{color:var(--td)}
+nav.s .n-links a::after{background:var(--r)}
+
+.n-actions{display:flex;gap:20px;align-items:center}
+.n-icon{font-size:18px;cursor:pointer;transition:transform .2s;position:relative;color:rgba(255,255,255,.8)}
+nav.s .n-icon{color:var(--ink)}
+.n-icon:hover{transform:scale(1.15)}
+.n-badge{
+  position:absolute;top:-6px;right:-6px;
+  width:17px;height:17px;background:var(--r);border-radius:50%;
+  font-size:9px;color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-weight:500;
+  border:2px solid var(--cr);
+}
+nav.s .n-badge{border-color:var(--cr)}
+
+/* ── HERO — FARM RIO STYLE ── */
+/* Full viewport, foto dominante, texto dramático sobreposto */
+.hero{
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.h-col{position:relative;overflow:hidden}
+.h-col img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  transform:scale(1.06);
+  animation:kz 8s ease forwards;
+  filter:brightness(.8);
+}
+.h-col:first-child img{filter:brightness(.75)}
+.h-sep{position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(232,201,181,.25);z-index:5}
+@keyframes kz{to{transform:scale(1)}}
+
+/* Overlay gradiente para legibilidade */
+.h-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,21,16,.85) 0%,rgba(30,21,16,.2) 50%,transparent 80%);
+  z-index:2;
+}
+
+/* Conteúdo central dramático */
+.h-content{
+  position:absolute;
+  bottom:80px;left:0;right:0;
+  z-index:10;
+  padding:0 80px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:flex-end;
+  gap:60px;
+}
+.h-title-block{}
+.h-eyebrow{
+  font-size:10px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--rl);opacity:.7;margin-bottom:16px;
+  animation:fu .8s ease forwards .4s;opacity:0;transform:translateY(12px);
+}
+.h-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(64px,7.5vw,112px);
+  font-weight:300;line-height:.92;
+  color:#fff;letter-spacing:-2px;
+  animation:fu 1s ease forwards .6s;opacity:0;transform:translateY(24px);
+}
+.h-title em{color:var(--rl);font-style:italic;display:block}
+
+.h-right-block{
+  display:flex;flex-direction:column;gap:20px;
+  align-items:flex-start;
+  animation:fu .9s ease forwards .9s;opacity:0;transform:translateY(20px);
+}
+.h-desc{
+  font-size:15px;color:rgba(255,255,255,.5);
+  line-height:1.8;max-width:340px;
+}
+.h-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn-glass{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;padding:13px 32px;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  font-family:'Outfit',sans-serif;cursor:pointer;
+  transition:all .3s;text-decoration:none;display:inline-block;
+}
+.btn-glass:hover{background:var(--r);border-color:var(--r)}
+.btn-solid{
+  background:var(--r);border:1px solid var(--r);
+  color:#fff;padding:13px 32px;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  font-family:'Outfit',sans-serif;cursor:pointer;
+  transition:all .3s;text-decoration:none;display:inline-block;
+}
+.btn-solid:hover{background:var(--td);border-color:var(--td)}
+
+/* Trust badges */
+.h-trust{
+  position:absolute;bottom:80px;left:50%;transform:translateX(-50%);
+  z-index:10;
+  display:flex;gap:2px;
+  animation:fu .8s ease forwards 1.2s;opacity:0;transform:translate(-50%,12px);
+}
+.trust-badge{
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.12);
+  padding:10px 20px;
+  display:flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+}
+.trust-badge span{color:var(--r);font-size:14px}
+
+/* Scroll hint */
+.h-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);
+  animation:fu 1s ease forwards 1.5s;opacity:0;
+}
+.h-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(232,201,181,.5),transparent);animation:sp 2s ease-in-out infinite}
+
+@keyframes fu{to{opacity:1;transform:translateY(0) translateX(0)}}
+@keyframes sp{0%,100%{opacity:.3}50%{opacity:.9}}
+
+/* ── TICKER ── */
+.ticker{background:var(--r);overflow:hidden;white-space:nowrap;padding:12px 0}
+.t-track{display:inline-flex;animation:mq 20s linear infinite}
+.t-item{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,252,250,.75);padding:0 24px}
+.t-dot{color:rgba(255,255,255,.4);font-size:12px;vertical-align:middle}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── MANIFESTO — FARM RIO TEM ISSO ── */
+.manifesto{
+  padding:120px 80px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:100px;align-items:center;
+  background:var(--cr);
+}
+.mf-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:180px;font-weight:300;line-height:.8;
+  color:rgba(196,144,110,.07);display:block;
+  margin-bottom:-50px;letter-spacing:-8px;
+}
+.mf-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,4.5vw,64px);
+  font-weight:300;line-height:1.05;color:var(--td);
+}
+.mf-title em{color:var(--r);font-style:italic;display:block}
+.mf-body p{font-size:15px;color:var(--mu);line-height:1.9;margin-bottom:20px}
+.mf-bq{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-style:italic;color:var(--td);
+  line-height:1.5;padding-left:20px;border-left:2px solid var(--r);
+  margin:28px 0;
+}
+.mf-link{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--r);text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:gap .3s;
+}
+.mf-link:hover{gap:16px}
+
+/* ── CATEGORIAS — GRID ASSIMÉTRICO FARM RIO ── */
+.cats{padding:0 0 120px}
+.cats-head{
+  padding:0 80px 60px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.s-ey{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--r);margin-bottom:6px}
+.s-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,3.5vw,52px);
+  font-weight:300;color:var(--td);line-height:1.1;
+}
+.s-link{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--r);text-decoration:none;
+  border-bottom:1px solid var(--r);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.s-link:hover{color:var(--td);border-color:var(--td)}
+
+/* Grid 5 células: 1 grande esquerda (2 linhas) + 4 pequenas */
+.cat-grid{
+  display:grid;
+  grid-template-columns:2fr 1.2fr 1.2fr;
+  grid-template-rows:360px 360px;
+  gap:3px;
+}
+.cat{position:relative;overflow:hidden;cursor:pointer}
+.cat:first-child{grid-row:1/3}
+.cat img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  transition:transform .8s cubic-bezier(.25,.46,.45,.94);
+  filter:brightness(.85);
+}
+.cat:hover img{transform:scale(1.07);filter:brightness(.78)}
+.cat-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,21,16,.75) 0%,rgba(30,21,16,.05) 45%,transparent 65%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px 24px;
+  transition:background .4s;
+}
+.cat:hover .cat-ov{background:linear-gradient(to top,rgba(30,21,16,.82) 0%,rgba(30,21,16,.1) 55%,transparent 70%)}
+.cat-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rl);opacity:.65;margin-bottom:5px}
+.cat-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,3vw,36px);
+  font-weight:300;color:#fff;line-height:1;
+}
+.cat-count{font-size:11px;color:rgba(255,255,255,.38);margin-top:4px}
+.cat-arrow{
+  position:absolute;top:20px;right:20px;
+  width:36px;height:36px;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:13px;
+  opacity:0;transform:translateY(-6px);
+  transition:opacity .3s,transform .3s;
+}
+.cat:hover .cat-arrow{opacity:1;transform:translateY(0)}
+
+/* ── PRODUTOS ── */
+.prods{padding:120px 80px;background:var(--ww)}
+.p-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
+.p-filters{display:flex;gap:3px}
+.pf{
+  background:transparent;border:1px solid var(--bo);
+  color:var(--mu);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  padding:9px 22px;cursor:pointer;font-family:'Outfit',sans-serif;
+  transition:all .2s;
+}
+.pf.a,.pf:hover{background:var(--td);border-color:var(--td);color:#fff}
+
+.p-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:3px;
+}
+/* card grande ocupa 2 colunas */
+.pc{position:relative;cursor:pointer;background:var(--rp)}
+.pc.wide{grid-column:span 2}
+
+.p-img{position:relative;overflow:hidden;aspect-ratio:3/4}
+.pc.wide .p-img{aspect-ratio:16/9}
+.p-img img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  transition:transform .7s cubic-bezier(.25,.46,.45,.94);
+  filter:brightness(.96);
+}
+.pc:hover .p-img img{transform:scale(1.07);filter:brightness(.88)}
+
+.p-badge{
+  position:absolute;top:14px;left:14px;
+  background:var(--r);color:#fff;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;z-index:2;
+}
+.p-fav{
+  position:absolute;top:14px;right:14px;
+  width:34px;height:34px;
+  background:rgba(255,252,250,.9);border:none;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:14px;cursor:pointer;z-index:2;
+  opacity:0;transform:translateY(-6px);
+  transition:opacity .3s,transform .3s,background .2s;
+}
+.pc:hover .p-fav{opacity:1;transform:translateY(0)}
+.p-fav:hover{background:var(--r)}
+
+.p-info{padding:16px 14px 18px}
+.p-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;color:var(--td);
+  margin-bottom:3px;font-weight:400;
+}
+.p-cat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+.p-prices{display:flex;align-items:baseline;gap:10px}
+.p-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--r)}
+.p-old{font-size:12px;color:var(--mu);text-decoration:line-through}
+.p-sizes{display:flex;gap:4px;margin-top:10px}
+.sz{
+  width:28px;height:28px;border:1px solid var(--bo);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--mu);cursor:pointer;
+  transition:all .2s;
+}
+.sz:hover,.sz.a{background:var(--td);border-color:var(--td);color:#fff}
+.sz.x{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.p-add{
+  width:100%;background:var(--td);color:var(--cr);border:none;
+  padding:12px;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  font-family:'Outfit',sans-serif;cursor:pointer;margin-top:14px;
+  opacity:0;transition:opacity .3s,background .2s;
+}
+.pc:hover .p-add{opacity:1}
+.p-add:hover{background:var(--r)}
+
+/* ── SEÇÃO CINEMÁTICA FULL-BLEED ── */
+.cinema{
+  height:100vh;min-height:600px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.cin-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.4);
+  transform:scale(1.05);
+  transition:transform 8s ease;
+}
+.cinema:hover .cin-bg{transform:scale(1)}
+.cin-content{
+  position:relative;z-index:5;
+  text-align:center;padding:0 80px;max-width:960px;
+}
+.cin-ey{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--rl);opacity:.6;margin-bottom:18px}
+.cin-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(56px,8vw,120px);
+  font-weight:300;line-height:.9;color:#fff;
+  letter-spacing:-2px;margin-bottom:28px;
+}
+.cin-title em{color:var(--rl);font-style:italic}
+.cin-rule{width:48px;height:1px;background:rgba(232,201,181,.4);margin:0 auto 24px}
+.cin-sub{font-size:15px;color:rgba(255,255,255,.4);line-height:1.9;margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto}
+.cin-stats{
+  display:flex;gap:64px;justify-content:center;
+  padding-top:40px;border-top:1px solid rgba(255,255,255,.08);
+  margin-bottom:48px;
+}
+.cs-n{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--rl);display:block;line-height:1}
+.cs-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
+
+/* ── FEATURES — DARK LUXURY ── */
+.feats{
+  background:var(--td);padding:120px 80px;
+  position:relative;overflow:hidden;
+}
+.feats::before{
+  content:'';position:absolute;
+  top:-200px;right:-200px;
+  width:600px;height:600px;border-radius:50%;
+  border:1px solid rgba(232,201,181,.05);
+}
+.f-head{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:end;margin-bottom:80px;
+}
+.f-head h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,5vw,68px);font-weight:300;
+  color:var(--cr);line-height:1.05;
+}
+.f-head h2 em{color:var(--rl);font-style:italic}
+.f-head p{font-size:14px;color:rgba(250,246,242,.35);line-height:1.9}
+.f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.fc{
+  padding:48px 40px;
+  border:1px solid rgba(232,201,181,.08);
+  position:relative;overflow:hidden;
+  transition:border-color .4s,background .4s;
+}
+.fc:hover{border-color:rgba(232,201,181,.2);background:rgba(232,201,181,.04)}
+.fc-bg{
+  font-family:'Cormorant Garamond',serif;
+  font-size:120px;font-weight:300;
+  color:rgba(232,201,181,.04);
+  position:absolute;bottom:-20px;right:16px;
+  line-height:1;transition:color .4s;pointer-events:none;
+}
+.fc:hover .fc-bg{color:rgba(232,201,181,.07)}
+.fc-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--r);margin-bottom:18px;display:block}
+.fc-icon{font-size:28px;margin-bottom:18px;display:block}
+.fc-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;color:var(--cr);margin-bottom:12px;font-weight:300;
+}
+.fc-desc{font-size:13px;color:rgba(250,246,242,.38);line-height:1.8}
+.fc-pill{
+  display:inline-block;margin-top:20px;
+  background:rgba(196,144,110,.15);border:1px solid rgba(196,144,110,.25);
+  color:var(--rl);font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 14px;
+}
+
+/* ── EDITORIAL SPLIT ── */
+.editorial{
+  display:grid;grid-template-columns:45% 55%;
+  min-height:90vh;
+}
+.ed-img{position:relative;overflow:hidden}
+.ed-img img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  filter:brightness(.88);
+  transition:transform 8s ease;
+}
+.ed-img:hover img{transform:scale(1.04)}
+.ed-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 60%,var(--td) 100%);
+}
+.ed-text{
+  background:var(--td);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 80px;position:relative;overflow:hidden;
+}
+.ed-text::before{
+  content:'MARIAah';
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  font-size:160px;font-weight:300;
+  color:rgba(255,255,255,.025);
+  right:-30px;top:50%;
+  transform:translateY(-50%) rotate(90deg);
+  letter-spacing:20px;white-space:nowrap;
+  pointer-events:none;
+}
+.ed-ey{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--r);margin-bottom:20px;opacity:.8}
+.ed-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,4.5vw,68px);
+  font-weight:300;color:var(--cr);line-height:1.05;margin-bottom:20px;
+}
+.ed-title em{color:var(--rl);font-style:italic}
+.ed-body{font-size:14px;color:rgba(250,246,242,.4);line-height:1.9;max-width:380px;margin-bottom:48px}
+.ed-stats{
+  display:flex;gap:48px;
+  padding-top:32px;border-top:1px solid rgba(255,255,255,.08);
+}
+.es-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:300;color:var(--rl);display:block;line-height:1;
+}
+.es-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:4px}
+
+/* ── WISHLIST FEATURE ── */
+.wish{
+  padding:120px 80px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:100px;align-items:center;
+  background:var(--rp);
+}
+.wl-badge{
+  display:inline-block;background:var(--r);color:#fff;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  padding:6px 16px;margin-bottom:24px;
+}
+.wl-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,4vw,60px);
+  font-weight:300;color:var(--td);line-height:1.08;margin-bottom:18px;
+}
+.wl-title em{color:var(--r);font-style:italic}
+.wl-desc{font-size:14px;color:var(--mu);line-height:1.9;max-width:400px;margin-bottom:32px}
+.wl-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.wl-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:13px;color:var(--td);line-height:1.5;
+}
+.wl-list li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--r);flex-shrink:0;margin-top:6px;
+}
+
+/* Phone mockup */
+.phone{
+  background:var(--ww);border-radius:32px;overflow:hidden;
+  box-shadow:0 60px 120px rgba(92,61,37,.18),0 20px 40px rgba(92,61,37,.1);
+  border:1px solid var(--bo);max-width:280px;margin:0 auto;
+}
+.ph-notch{height:26px;background:var(--td);display:flex;align-items:center;justify-content:center}
+.ph-notch-pill{width:54px;height:5px;background:rgba(255,255,255,.12);border-radius:3px}
+.ph-head{background:var(--td);padding:12px 18px 16px;display:flex;align-items:center;gap:10px}
+.ph-av{
+  width:32px;height:32px;border-radius:50%;background:var(--r);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:15px;color:#fff;flex-shrink:0;
+}
+.ph-brand{font-size:12px;font-weight:500;color:#fff;letter-spacing:.5px}
+.ph-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px}
+.ph-body{padding:14px}
+.ph-sec{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--r);margin-bottom:10px}
+.ph-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px;border-radius:10px;margin-bottom:8px;
+  background:var(--rp);border:1px solid var(--bo);
+}
+.ph-thumb{width:44px;height:52px;object-fit:cover;border-radius:6px;background:var(--nu);flex-shrink:0}
+.ph-pn{font-size:11px;color:var(--td);font-weight:500;margin-bottom:2px;line-height:1.3}
+.ph-pp{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--r)}
+.ph-hrt{color:var(--r);font-size:16px}
+.ph-cta{
+  background:var(--r);color:#fff;text-align:center;
+  padding:12px;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  border-radius:8px;margin-top:8px;cursor:pointer;
+}
+
+/* ── DEPOIMENTOS ── */
+.testis{padding:120px 80px;background:var(--ww)}
+.t-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:3px;margin-top:64px;
+}
+.tc{
+  padding:44px 36px;background:var(--rp);
+  position:relative;
+  transition:background .3s;
+}
+.tc:hover{background:var(--cr)}
+.tc:nth-child(2){margin-top:40px}
+.tc:nth-child(3){margin-top:-40px}
+.tq{
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;color:var(--r);opacity:.12;
+  position:absolute;top:12px;left:24px;
+  line-height:1;font-style:italic;
+}
+.t-stars{display:flex;gap:2px;margin-bottom:14px;position:relative;z-index:1}
+.t-stars span{color:var(--r);font-size:12px}
+.t-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;color:var(--td);line-height:1.6;
+  font-style:italic;margin-bottom:22px;position:relative;z-index:1;
+}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-av{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--bo)}
+.t-name{font-size:13px;font-weight:500;color:var(--td)}
+.t-loc{font-size:10px;color:var(--mu)}
+
+/* ── NEWSLETTER ── */
+.nl{
+  background:var(--ink);padding:120px 80px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.nl::before{
+  content:'MARIAah';
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  font-size:220px;font-weight:300;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.02);letter-spacing:20px;
+  white-space:nowrap;pointer-events:none;
+}
+.nl-ey{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--r);opacity:.7;margin-bottom:14px}
+.nl-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,5vw,80px);font-weight:300;
+  color:var(--cr);line-height:1;margin-bottom:14px;
+}
+.nl-title em{color:var(--rl);font-style:italic}
+.nl-sub{font-size:14px;color:rgba(250,246,242,.35);margin-bottom:44px;line-height:1.8}
+.nl-form{display:flex;max-width:500px;margin:0 auto;position:relative;z-index:1}
+.nl-inp{
+  flex:1;padding:16px 20px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-right:none;color:var(--cr);font-family:'Outfit',sans-serif;
+  font-size:13px;outline:none;transition:border-color .2s;
+}
+.nl-inp::placeholder{color:rgba(250,246,242,.25)}
+.nl-inp:focus{border-color:var(--r)}
+.nl-btn{
+  background:var(--r);color:#fff;border:none;
+  padding:16px 28px;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  font-family:'Outfit',sans-serif;cursor:pointer;transition:background .2s;white-space:nowrap;
+}
+.nl-btn:hover{background:var(--te)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:80px 80px 40px;border-top:1px solid rgba(255,255,255,.04)}
+.f-grid{
+  display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;
+  gap:60px;padding-bottom:60px;
+  border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:36px;
+}
+.f-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:300;letter-spacing:8px;
+  text-transform:uppercase;color:var(--cr);
+  margin-bottom:14px;display:block;
+}
+.f-logo em{color:var(--r);font-style:italic}
+.f-desc{font-size:13px;color:rgba(255,255,255,.25);line-height:1.8;max-width:260px;margin-bottom:22px}
+.f-soc{display:flex;gap:10px}
+.f-sb{
+  width:36px;height:36px;border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:14px;cursor:pointer;transition:all .2s;text-decoration:none;
+}
+.f-sb:hover{border-color:var(--r);transform:translateY(-2px)}
+.f-col h5{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--r);margin-bottom:18px;font-weight:400}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.f-col a{font-size:13px;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}
+.f-col a:hover{color:var(--rl)}
+.f-bottom{display:flex;justify-content:space-between;align-items:center}
+.f-bottom p{font-size:11px;color:rgba(255,255,255,.15)}
+.f-bottom span{color:var(--r);opacity:.5}
+
+/* ── FLOATING CART ── */
+.fcart{
+  position:fixed;bottom:32px;right:32px;
+  width:54px;height:54px;background:var(--td);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;cursor:pointer;z-index:200;
+  box-shadow:0 8px 32px rgba(92,61,37,.4);
+  transition:transform .3s,background .3s;
+}
+.fcart:hover{transform:scale(1.1) translateY(-2px);background:var(--r)}
+.fcb{
+  position:absolute;top:-4px;right:-4px;
+  width:19px;height:19px;background:var(--r);border-radius:50%;
+  font-size:9px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;border:2px solid var(--cr);
+  font-family:'Outfit',sans-serif;
+}
+.fcart:hover .fcb{background:var(--td)}
+
+/* ── MOBILE STICKY BAR ── */
+.mob-bar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(255,252,250,.96);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--bo);
+  padding:12px 20px;z-index:300;
+  box-shadow:0 -4px 20px rgba(0,0,0,.06);
+}
+@media(max-width:900px){
+  .mob-bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+}
+.mob-price .price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--r)}
+.mob-price .old{font-size:12px;color:var(--mu);text-decoration:line-through;display:block}
+.mob-price .tag{
+  font-size:9px;background:var(--r);color:#fff;
+  padding:2px 7px;letter-spacing:1px;text-transform:uppercase;
+  display:inline-block;margin-top:3px;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.mob-cta{
+  flex:1;background:var(--td);color:#fff;border:none;
+  padding:14px;font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  font-family:'Outfit',sans-serif;cursor:pointer;transition:background .2s;
+}
+.mob-cta:hover{background:var(--r)}
+
+/* ── SCROLL REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+.rv2{opacity:0;transform:translateX(-36px);transition:opacity .9s ease,transform .9s ease}
+.rv2.on{opacity:1;transform:translateX(0)}
+.rv3{opacity:0;transform:translateX(36px);transition:opacity .9s ease,transform .9s ease}
+.rv3.on{opacity:1;transform:translateX(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav{padding:0 28px}
+  nav.s{padding:0 28px}
+  .n-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .h-col:last-child{display:none}
+  .h-content{grid-template-columns:1fr;padding:0 32px;gap:24px}
+  .manifesto,.wish{grid-template-columns:1fr;gap:48px;padding:80px 32px}
+  .cats-head,.prods,.feats,.testis,.nl,footer{padding-left:32px;padding-right:32px}
+  .cat-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .cat:first-child{grid-row:auto;grid-column:span 2;height:400px}
+  .cat{height:280px}
+  .p-grid{grid-template-columns:repeat(2,1fr)}
+  .pc.wide{grid-column:span 1}
+  .pc.wide .p-img{aspect-ratio:3/4}
+  .f-grid{grid-template-columns:1fr;gap:32px}
+  .editorial{grid-template-columns:1fr}
+  .ed-img{height:60vw}
+  .ed-img::after{display:none}
+  .ed-text{padding:60px 32px}
+  .f-head{grid-template-columns:1fr}
+  .f-grid-feats{grid-template-columns:1fr}
+  .f-grid.f-grid-feats{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr}
+  .tc:nth-child(2),.tc:nth-child(3){margin-top:0}
+  .cin-stats{gap:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- FLOATING CART -->
+<div class="fcart">🛍<div class="fcb">3</div></div>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mob-bar">
+  <div class="mob-price">
+    <span class="old">R$ 249,90</span>
+    <span class="price">R$ 189,90</span>
+    <span class="tag">Vendendo rápido</span>
+  </div>
+  <button class="mob-cta">Comprar agora</button>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  <div class="promo-track">
+    <span class="promo-item"><span class="promo-dot">·</span> Frete grátis acima de R$ 150 <span class="promo-dot">·</span></span>
+    <span class="promo-item">Trocas em até 30 dias <span class="promo-dot">·</span></span>
+    <span class="promo-item">Atendimento via WhatsApp <span class="promo-dot">·</span></span>
+    <span class="promo-item">Anápolis, GO <span class="promo-dot">·</span></span>
+    <span class="promo-item">Nova coleção disponível <span class="promo-dot">·</span></span>
+    <!-- duplicado para loop -->
+    <span class="promo-item"><span class="promo-dot">·</span> Frete grátis acima de R$ 150 <span class="promo-dot">·</span></span>
+    <span class="promo-item">Trocas em até 30 dias <span class="promo-dot">·</span></span>
+    <span class="promo-item">Atendimento via WhatsApp <span class="promo-dot">·</span></span>
+    <span class="promo-item">Anápolis, GO <span class="promo-dot">·</span></span>
+    <span class="promo-item">Nova coleção disponível <span class="promo-dot">·</span></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="n-logo">MARIA<em>ah</em></a>
+  <ul class="n-links">
+    <li><a href="#">Feminino</a></li>
+    <li><a href="#">Masculino</a></li>
+    <li><a href="#">Infantil</a></li>
+    <li><a href="#">Novidades</a></li>
+    <li><a href="#">Promoções</a></li>
+  </ul>
+  <div class="n-actions">
+    <div class="n-icon">🔍</div>
+    <div class="n-icon">♡</div>
+    <div class="n-icon" style="position:relative">🛍<div class="n-badge">3</div></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-col">
+    <!-- FOTO 1: hero-feminino.jpg -->
+    <img id="foto1" src="hero-feminino.jpg" alt="Moda feminina"
+      onerror="this.onerror=null;this.style.opacity='0'">
+  </div>
+  <div class="h-col">
+    <!-- FOTO 2: hero-masculino.jpg -->
+    <img id="foto2" src="hero-masculino.jpg" alt="Moda masculina"
+      onerror="this.onerror=null;this.style.opacity='0'">
+  </div>
+  <div class="h-sep"></div>
+  <div class="h-overlay"></div>
+
+  <div class="h-content">
+    <div class="h-title-block">
+      <div class="h-eyebrow">Coleção Primavera · 2026</div>
+      <h1 class="h-title">
+        Moda que
+        <em>abraça</em>
+      </h1>
+    </div>
+    <div class="h-right-block">
+      <p class="h-desc">Peças selecionadas com cuidado para que sua família se sinta bem — do dia a dia às ocasiões especiais.</p>
+      <div class="h-ctas">
+        <a href="#" class="btn-glass">Ver coleção</a>
+        <a href="#" class="btn-solid">Comprar agora</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-trust">
+    <div class="trust-badge"><span>✦</span> Entrega em Anápolis</div>
+    <div class="trust-badge"><span>✦</span> Troca em 30 dias</div>
+    <div class="trust-badge"><span>✦</span> Pix sem juros</div>
+  </div>
+
+  <div class="h-scroll">
+    <div class="h-line"></div>
+    descubra
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="t-track">
+    <span class="t-item">Feminino</span><span class="t-dot">·</span>
+    <span class="t-item">Masculino</span><span class="t-dot">·</span>
+    <span class="t-item">Infantil</span><span class="t-dot">·</span>
+    <span class="t-item">Nova coleção primavera</span><span class="t-dot">·</span>
+    <span class="t-item">Anápolis, GO</span><span class="t-dot">·</span>
+    <span class="t-item">Moda para toda a família</span><span class="t-dot">·</span>
+    <span class="t-item">Estoque em tempo real</span><span class="t-dot">·</span>
+    <span class="t-item">Feminino</span><span class="t-dot">·</span>
+    <span class="t-item">Masculino</span><span class="t-dot">·</span>
+    <span class="t-item">Infantil</span><span class="t-dot">·</span>
+    <span class="t-item">Nova coleção primavera</span><span class="t-dot">·</span>
+    <span class="t-item">Anápolis, GO</span><span class="t-dot">·</span>
+    <span class="t-item">Moda para toda a família</span><span class="t-dot">·</span>
+    <span class="t-item">Estoque em tempo real</span><span class="t-dot">·</span>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="rv2">
+    <span class="mf-num">01</span>
+    <h2 class="mf-title">Cada peça conta uma <em>história</em></h2>
+  </div>
+  <div class="mf-body rv3">
+    <p>A Mariaah não é uma loja qualquer. É o lugar onde a mãe encontra sua peça favorita do mês, o pai escolhe o look do fim de semana e os filhos ganham roupinhas com personalidade.</p>
+    <blockquote class="mf-bq">"Aqui toda a família encontra algo para se apaixonar."</blockquote>
+    <p>Por isso a Ângela seleciona cada peça com o mesmo cuidado que tem pela sua família. Não é qualquer roupa — é a roupa certa, para a pessoa certa.</p>
+    <a href="#" class="mf-link">Conheça nossa história →</a>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="cats">
+  <div class="cats-head rv">
+    <div>
+      <div class="s-ey">Explore</div>
+      <h2 class="s-title">Nossas categorias</h2>
+    </div>
+    <a href="#" class="s-link">Ver tudo</a>
+  </div>
+
+  <div class="cat-grid">
+    <!-- FOTO 3: cat-feminino.jpg (grande, ocupa 2 linhas) -->
+    <div class="cat rv">
+      <img src="cat-feminino.jpg" alt="Feminino"
+        onerror="this.onerror=null;this.style.opacity='0'">
+      <div class="cat-ov">
+        <div class="cat-tag">Coleção primavera</div>
+        <div class="cat-name">Feminino</div>
+        <div class="cat-count">148 peças disponíveis</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+
+    <!-- FOTO 4: cat-masculino.jpg -->
+    <div class="cat rv" style="transition-delay:.1s">
+      <img src="cat-masculino.jpg" alt="Masculino"
+        onerror="this.onerror=null;this.style.opacity='0'">
+      <div class="cat-ov">
+        <div class="cat-tag">Estilo casual</div>
+        <div class="cat-name">Masculino</div>
+        <div class="cat-count">92 peças</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+
+    <!-- FOTO 5: cat-infantil.jpg -->
+    <div class="cat rv" style="transition-delay:.2s">
+      <img src="cat-infantil.jpg" alt="Infantil"
+        onerror="this.onerror=null;this.style.opacity='0'">
+      <div class="cat-ov">
+        <div class="cat-tag">Para os pequenos</div>
+        <div class="cat-name">Infantil</div>
+        <div class="cat-count">74 peças</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+
+    <div class="cat rv" style="transition-delay:.3s;background:var(--rp)">
+      <div class="cat-ov" style="background:linear-gradient(to top,rgba(92,61,37,.85) 0%,rgba(92,61,37,.3) 100%)">
+        <div class="cat-tag">Detalhes que fazem diferença</div>
+        <div class="cat-name">Acessórios</div>
+        <div class="cat-count">56 peças</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+
+    <div class="cat rv" style="transition-delay:.4s;background:var(--td)">
+      <div class="cat-ov" style="background:linear-gradient(to top,rgba(30,21,16,.9) 0%,rgba(30,21,16,.4) 100%)">
+        <div class="cat-tag">Até 40% off</div>
+        <div class="cat-name">Promoções</div>
+        <div class="cat-count">38 peças</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="prods">
+  <div class="p-head rv">
+    <div>
+      <div class="s-ey">Destaques</div>
+      <h2 class="s-title">Mais vendidos</h2>
+    </div>
+    <div class="p-filters">
+      <button class="pf a" onclick="filterProds(this,'todos')">Todos</button>
+      <button class="pf" onclick="filterProds(this,'feminino')">Feminino</button>
+      <button class="pf" onclick="filterProds(this,'masculino')">Masculino</button>
+      <button class="pf" onclick="filterProds(this,'infantil')">Infantil</button>
+    </div>
+  </div>
+
+  <div class="p-grid" id="pGrid">
+    <!-- FOTO 3 reusada / produto 1 -->
+    <div class="pc wide rv" data-cat="feminino">
+      <div class="p-img">
+        <img src="prod-vestido.jpg" alt="Vestido Midi Floral"
+          onerror="this.onerror=null;this.style.opacity='0'">
+        <div class="p-badge">Novo</div>
+        <button class="p-fav">♡</button>
+      </div>
+      <div class="p-info">
+        <div class="p-name">Vestido Midi Floral</div>
+        <div class="p-cat">Feminino</div>
+        <div class="p-prices"><span class="p-price">R$ 189,90</span><span class="p-old">R$ 249,90</span></div>
+        <div class="p-sizes">
+          <div class="sz">PP</div><div class="sz a">P</div>
+          <div class="sz">M</div><div class="sz x">G</div><div class="sz">GG</div>
+        </div>
+        <button class="p-add">Adicionar ao carrinho</button>
+      </div>
+    </div>
+
+    <div class="pc rv" data-cat="feminino" style="transition-delay:.08s">
+      <div class="p-img">
+        <img src="prod-blusa.jpg" alt="Blusa Ombro a Ombro"
+          onerror="this.onerror=null;this.style.opacity='0'">
+        <button class="p-fav">♡</button>
+      </div>
+      <div class="p-info">
+        <div class="p-name">Blusa Ombro a Ombro</div>
+        <div class="p-cat">Feminino</div>
+        <div class="p-prices"><span class="p-price">R$ 99,90</span></div>
+        <div class="p-sizes">
+          <div class="sz a">PP</div><div class="sz">P</div><div class="sz">M</div><div class="sz">G</div>
+        </div>
+        <button class="p-add">Adicionar ao carrinho</button>
+      </div>
+    </div>
+
+    <div class="pc rv" data-cat="masculino" style="transition-delay:.16s">
+      <div class="p-img">
+        <img src="prod-camisa.jpg" alt="Camisa Oxford Slim"
+          onerror="this.onerror=null;this.style.opacity='0'">
+        <button class="p-fav">♡</button>
+      </div>
+      <div class="p-info">
+        <div class="p-name">Camisa Oxford Slim</div>
+        <div class="p-cat">Masculino</div>
+        <div class="p-prices"><span class="p-price">R$ 149,90</span></div>
+        <div class="p-sizes">
+          <div class="sz">P</div><div class="sz a">M</div><div class="sz">G</div><div class="sz">GG</div>
+        </div>
+        <button class="p-add">Adicionar ao carrinho</button>
+      </div>
+    </div>
+
+    <div class="pc rv" data-cat="feminino" style="transition-delay:.24s">
+      <div class="p-img">
+        <img src="prod-tricot.jpg" alt="Blusa Tricot Rosé"
+          onerror="this.onerror=null;this.style.opacity='0'">
+        <div class="p-badge">-30%</div>
+        <button class="p-fav">♡</button>
+      </div>
+      <div class="p-info">
+        <div class="p-name">Blusa Tricot Rosé</div>
+        <div class="p-cat">Feminino</div>
+        <div class="p-prices"><span class="p-price">R$ 109,90</span><span class="p-old">R$ 159,90</span></div>
+        <div class="p-sizes">
+          <div class="sz a">PP</div><div class="sz">P</div><div class="sz">M</div><div class="sz">G</div>
+        </div>
+        <button class="p-add">Adicionar ao carrinho</button>
+      </div>
+    </div>
+
+    <div class="pc wide rv" data-cat="infantil" style="transition-delay:.32s">
+      <div class="p-img">
+        <img src="prod-infantil.jpg" alt="Conjunto Infantil"
+          onerror="this.onerror=null;this.style.opacity='0'">
+        <div class="p-badge">♡ Favorito</div>
+        <button class="p-fav">♡</button>
+      </div>
+      <div class="p-info">
+        <div class="p-name">Conjunto Infantil Linho</div>
+        <div class="p-cat">Infantil · 2–8 anos</div>
+        <div class="p-prices"><span class="p-price">R$ 89,90</span></div>
+        <div class="p-sizes">
+          <div class="sz a">2</div><div class="sz">4</div><div class="sz">6</div><div class="sz x">8</div>
+        </div>
+        <button class="p-add">Adicionar ao carrinho</button>
+      </div>
+    </div>
+
+    <div class="pc rv" data-cat="infantil" style="transition-delay:.4s">
+      <div class="p-img">
+        <img src="prod-vestido-inf.jpg" alt="Vestido Infantil"
+          onerror="this.onerror=null;this.style.opacity='0'">
+        <div class="p-badge">Novo</div>
+        <button class="p-fav">♡</button>
+      </div>
+      <div class="p-info">
+        <div class="p-name">Vestido Infantil Florido</div>
+        <div class="p-cat">Infantil · 3–10 anos</div>
+        <div class="p-prices"><span class="p-price">R$ 79,90</span></div>
+        <div class="p-sizes">
+          <div class="sz">3</div><div class="sz a">5</div><div class="sz">7</div><div class="sz">9</div>
+        </div>
+        <button class="p-add">Adicionar ao carrinho</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CINEMÁTICA -->
+<section class="cinema">
+  <!-- FOTO 6: cinema-bg.jpg (foto editorial de fundo) -->
+  <img class="cin-bg" src="cinema-bg.jpg" alt=""
+    onerror="this.onerror=null;this.style.opacity='0'">
+  <div class="cin-content rv">
+    <div class="cin-ey">Coleção Primavera 2026</div>
+    <h2 class="cin-title">Moda que conta<br>uma <em>história</em></h2>
+    <div class="cin-rule"></div>
+    <p class="cin-sub">Cada peça é selecionada com intenção. Para que você se sinta bem, se veja bonita e leve confiança no dia a dia.</p>
+    <div class="cin-stats">
+      <div><span class="cs-n">314+</span><div class="cs-l">Peças disponíveis</div></div>
+      <div><span class="cs-n">2.4k</span><div class="cs-l">Clientes felizes</div></div>
+      <div><span class="cs-n">4.9★</span><div class="cs-l">Avaliação média</div></div>
+    </div>
+    <a href="#" class="btn-solid">Explorar coleção</a>
+  </div>
+</section>
+
+<!-- FEATURES EXCLUSIVAS -->
+<section class="feats">
+  <div class="f-head rv">
+    <h2>Experiências que<br>só a <em>Mariaah</em> tem</h2>
+    <p>Duas features exclusivas que nenhuma outra loja de Anápolis oferece. Tecnologia pensada para o jeito que sua família compra.</p>
+  </div>
+  <div class="f-grid rv">
+    <div class="fc">
+      <span class="fc-bg">01</span>
+      <span class="fc-tag">Exclusivo · Só na Mariaah</span>
+      <span class="fc-icon">👗</span>
+      <div class="fc-title">Provador Virtual de Looks</div>
+      <p class="fc-desc">Monte looks completos antes de comprar. Combine peças do catálogo, visualize o conjunto e adicione tudo ao carrinho de uma vez. Menos devolução, mais satisfação.</p>
+      <span class="fc-pill">Aumenta o ticket em até 40%</span>
+    </div>
+    <div class="fc">
+      <span class="fc-bg">02</span>
+      <span class="fc-tag">Exclusivo · Só na Mariaah</span>
+      <span class="fc-icon">❤️</span>
+      <div class="fc-title">Lista de Desejo da Família</div>
+      <p class="fc-desc">Cada membro da família cria sua lista personalizada. O marido sabe o que comprar de presente. Os filhos montam a lista escolar. Nunca mais errar na escolha.</p>
+      <span class="fc-pill">Fideliza toda a família</span>
+    </div>
+    <div class="fc">
+      <span class="fc-bg">03</span>
+      <span class="fc-tag">Tecnologia</span>
+      <span class="fc-icon">⚡</span>
+      <div class="fc-title">Estoque em Tempo Real</div>
+      <p class="fc-desc">Veja exatamente quantas unidades restam de cada tamanho e cor. Produto esgotado some do site automaticamente. Alerta no WhatsApp quando estoque baixar.</p>
+      <span class="fc-pill">Nunca venda o que não tem</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL SPLIT -->
+<div class="editorial">
+  <div class="ed-img">
+    <!-- FOTO 7: editorial.jpg -->
+    <img src="editorial.jpg" alt="Curadoria Mariaah"
+      onerror="this.onerror=null;this.style.opacity='0'">
+  </div>
+  <div class="ed-text rv3">
+    <div class="ed-ey">A Mariaah · Anápolis, GO</div>
+    <h2 class="ed-title">Curadoria<br>com <em>alma</em></h2>
+    <p class="ed-body">A Ângela seleciona cada peça com o mesmo cuidado que tem pela sua família. Não é qualquer roupa — é a roupa certa, para a pessoa certa, no momento certo.</p>
+    <a href="#" class="btn-glass" style="margin-bottom:48px">Nossa história</a>
+    <div class="ed-stats">
+      <div><span class="es-n">314+</span><div class="es-l">Peças em estoque</div></div>
+      <div><span class="es-n">2.4k</span><div class="es-l">Famílias atendidas</div></div>
+      <div><span class="es-n">5★</span><div class="es-l">Avaliações Google</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WISHLIST FEATURE -->
+<section class="wish">
+  <div class="rv2">
+    <div class="wl-badge">Exclusivo · Só na Mariaah</div>
+    <h2 class="wl-title">Lista de Desejo<br>da <em>Família</em></h2>
+    <p class="wl-desc">Uma feature que nenhuma outra loja de Anápolis tem. Cada membro da família cria sua lista — e presentear fica fácil de verdade.</p>
+    <ul class="wl-list">
+      <li>Mamãe adiciona a blusa que quer ganhar no aniversário</li>
+      <li>Papai acessa a lista e compra o presente certeiro</li>
+      <li>Filhos montam a lista do volta às aulas</li>
+      <li>Avó vê a listinha e compra com total confiança</li>
+      <li>Notificação quando o preço do item favorito baixar</li>
+    </ul>
+    <a href="#" class="btn-solid">Criar minha lista</a>
+  </div>
+  <div class="rv3">
+    <div class="phone">
+      <div class="ph-notch"><div class="ph-notch-pill"></div></div>
+      <div class="ph-head">
+        <div class="ph-av">M</div>
+        <div><div class="ph-brand">MARIAah</div><div class="ph-sub">Lista da Ana Paula ♡</div></div>
+      </div>
+      <div class="ph-body">
+        <div class="ph-sec">3 peças na lista</div>
+        <div class="ph-item">
+          <img class="ph-thumb" src="prod-vestido.jpg" alt=""
+            onerror="this.onerror=null;this.style.opacity='0'">
+          <div><div class="ph-pn">Vestido Midi Floral · P</div><div class="ph-pp">R$ 189,90</div></div>
+          <div class="ph-hrt">♥</div>
+        </div>
+        <div class="ph-item">
+          <img class="ph-thumb" src="prod-tricot.jpg" alt=""
+            onerror="this.onerror=null;this.style.opacity='0'">
+          <div><div class="ph-pn">Blusa Tricot Rosé · M</div><div class="ph-pp">R$ 109,90</div></div>
+          <div class="ph-hrt">♥</div>
+        </div>
+        <div class="ph-item">
+          <img class="ph-thumb" src="prod-blusa.jpg" alt=""
+            onerror="this.onerror=null;this.style.opacity='0'">
+          <div><div class="ph-pn">Blusa Ombro a Ombro · P</div><div class="ph-pp">R$ 99,90</div></div>
+          <div class="ph-hrt">♥</div>
+        </div>
+        <div class="ph-cta">Comprar como presente 🎁</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testis">
+  <div class="rv">
+    <div class="s-ey">Quem já comprou</div>
+    <h2 class="s-title">Clientes felizes</h2>
+  </div>
+  <div class="t-grid">
+    <div class="tc rv">
+      <div class="tq">"</div>
+      <div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="t-text">"Comprei online pela primeira vez e fiquei impressionada. A blusa chegou no prazo e ficou melhor do que na foto!"</p>
+      <div class="t-author">
+        <div style="width:42px;height:42px;border-radius:50%;background:var(--r);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;flex-shrink:0">F</div>
+        <div><div class="t-name">Fernanda Costa</div><div class="t-loc">Anápolis, GO</div></div>
+      </div>
+    </div>
+    <div class="tc rv" style="transition-delay:.15s">
+      <div class="tq">"</div>
+      <div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="t-text">"Usei a lista de desejos para o aniversário da minha esposa e ela amou! Nunca mais vou errar o presente."</p>
+      <div class="t-author">
+        <div style="width:42px;height:42px;border-radius:50%;background:var(--td);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;flex-shrink:0">R</div>
+        <div><div class="t-name">Ricardo Alves</div><div class="t-loc">Anápolis, GO</div></div>
+      </div>
+    </div>
+    <div class="tc rv" style="transition-delay:.3s">
+      <div class="tq">"</div>
+      <div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="t-text">"O site é lindo demais! Comprei roupas pra mim e pro meu filho tudo no mesmo lugar. Chegou rapidinho!"</p>
+      <div class="t-author">
+        <div style="width:42px;height:42px;border-radius:50%;background:var(--nu);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--td);flex-shrink:0">C</div>
+        <div><div class="t-name">Camila Mendes</div><div class="t-loc">Anápolis, GO</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="nl">
+  <div class="nl-ey">Fique por dentro</div>
+  <h2 class="nl-title">Novidades em<br>primeira <em>mão</em></h2>
+  <p class="nl-sub">Cadastre seu WhatsApp e receba lançamentos, promoções exclusivas<br>e alertas quando sua peça favorita voltar ao estoque.</p>
+  <div class="nl-form">
+    <input class="nl-inp" type="tel" placeholder="(62) 9 0000-0000">
+    <button class="nl-btn">Quero receber</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-grid">
+    <div>
+      <span class="f-logo">MARIA<em>ah</em></span>
+      <p class="f-desc">Moda para toda a família — selecionada com cuidado para cada momento da vida da sua família.</p>
+      <div class="f-soc">
+        <a href="#" class="f-sb">📸</a>
+        <a href="#" class="f-sb">💬</a>
+        <a href="#" class="f-sb">▶</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Loja</h5>
+      <ul>
+        <li><a href="#">Feminino</a></li>
+        <li><a href="#">Masculino</a></li>
+        <li><a href="#">Infantil</a></li>
+        <li><a href="#">Promoções</a></li>
+        <li><a href="#">Novidades</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Atendimento</h5>
+      <ul>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Trocas</a></li>
+        <li><a href="#">Rastrear pedido</a></li>
+        <li><a href="#">Dúvidas</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>A loja</h5>
+      <ul>
+        <li><a href="#">Sobre nós</a></li>
+        <li><a href="#">Nossa história</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Anápolis · GO</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <p>© 2026 MARIAah · Todos os direitos reservados</p>
+    <p>Desenvolvido por <span>VPEX Solutions</span> · Anápolis, GO</p>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR MAGNÉTICO ──
+const cur = document.getElementById('cur');
+const cur2 = document.getElementById('cur2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function loop(){
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  cur2.style.left=rx+'px';cur2.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.cat,.pc,.n-icon,.fcart').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('h');cur2.classList.add('h')});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('h');cur2.classList.remove('h')});
+});
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',scrollY>80);
+});
+
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}
+  });
+},{threshold:.08});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
+
+// ── FILTER PRODUTOS ──
+function filterProds(btn, cat){
+  document.querySelectorAll('.pf').forEach(b=>b.classList.remove('a'));
+  btn.classList.add('a');
+  document.querySelectorAll('#pGrid .pc').forEach(pc=>{
+    const pcCat = pc.dataset.cat;
+    pc.style.display = (cat==='todos'||pcCat===cat) ? '' : 'none';
+  });
+}
+
+// ── TAMANHOS ──
+document.querySelectorAll('.p-sizes').forEach(psz=>{
+  psz.querySelectorAll('.sz:not(.x)').forEach(sz=>{
+    sz.addEventListener('click',()=>{
+      psz.querySelectorAll('.sz').forEach(s=>s.classList.remove('a'));
+      sz.classList.add('a');
+    });
+  });
+});
+</script>
+</body>
+</html>
